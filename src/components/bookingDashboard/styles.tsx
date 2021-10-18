@@ -13,34 +13,56 @@ export const BookingContainer = styled.table`
   flex-direction: column;
   width: 100%;
   background: blue;
+  max-width: 1200px;
   margin-top: 2rem;
+  margin: 0 auto;
   .bookingDateContainer {
   }
 `;
 
-export const TableContainer = styled.div`
+export const DashboardContainer = styled.div`
   display: flex;
   width: 100%;
-  /* max-width: 1200px; */
+  max-width: 1500px;
   margin: 0 auto;
-  table {
-    display: inline-block;
-    overflow-x: scroll;
-    margin: 0 auto;
-    thead {
-      tr {
-        background: yellow;
-        th {
-          min-width: 10rem;
-        }
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 1rem;
+  overflow: scroll;
+  .dashboardTimeContainer {
+    display: flex;
+    flex-direction: column;
+    small {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 4px solid var(--gray);
+      height: 4.3rem;
+      width: 8rem;
+      text-align: center;
+      font-size:0.7rem;
+      background: white;
+      &:nth-child( 2n + 1 ){
+        background: var(--gray);
       }
+
     }
-    tbody {
-      tr {
-        td {
-          min-width: 10rem;
-        }
+  }
+  .dashboardDiaplyContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    /* .display{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 4.3rem;
+      background: white;
+      width: 100%;
+      &:nth-child( 2n + 1 ){
+        background: var(--gray);
       }
-    }
+    } */
   }
 `;

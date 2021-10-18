@@ -37,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     border-radius: 0.5rem;
     &:active {
-      transform: scale(0.98);
+      transform: scale(0.99);
     }
     &:hover {
       filter: brightness(0.9);
@@ -55,6 +55,7 @@ export const GlobalStyle = createGlobalStyle`
     --blue-900: #22314D;
     --blue-500: #56698F;
     --blue-100: #29BAD6;
+    --blue-50: #00D5FF;
     --orange: orange;
     --green: #009846;
     --red: #E31E24;
