@@ -1,21 +1,4 @@
 export let data = {
-  tables: [
-    {
-      id: 1,
-      amountOfPeople: 2,
-      quantityOfTables: 10,
-    },
-    {
-      id: 2,
-      amountOfPeople: 3,
-      quantityOfTables: 10,
-    },
-    {
-      id: 3,
-      amountOfPeople: 4,
-      quantityOfTables: 10,
-    },
-  ],
   bookings: [
     {
       id: 1,
@@ -122,7 +105,17 @@ export let data = {
             {
               id: 2,
               amountOfPeople: 2,
-              name: "Raphael Mesquita",
+              name: "Faye Moloney",
+              confirmed: false,
+              mobileNumber: '834280065',
+              email: "raphaelbmesquita@gmail.com",
+              request: "este pode abrir 2",
+              hasRequest: true
+            },
+            {
+              id: 3,
+              amountOfPeople: 2,
+              name: "Michael ",
               confirmed: false,
               mobileNumber: '834280065',
               email: "raphaelbmesquita@gmail.com",

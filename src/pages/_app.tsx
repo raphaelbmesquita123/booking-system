@@ -1,13 +1,16 @@
-import type { AppProps } from 'next/app'
-import { ToastContainer } from 'react-toastify'
+import type { AppProps } from "next/app";
+import { ToastContainer } from "react-toastify";
 
 //styles
-import { GlobalStyle } from './styles/globals'
-import 'react-toastify/dist/ReactToastify.css'
+import { GlobalStyle } from "./styles/globals";
+import "react-toastify/dist/ReactToastify.css";
+
+//hooks
+import { BookingContextProvider } from "../hooks";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <BookingContextProvider>
       <GlobalStyle />
       <ToastContainer
         position='bottom-right'
@@ -21,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         pauseOnHover
       />
       <Component {...pageProps} />
-    </>
-  )
+    </BookingContextProvider>
+  );
 }
-export default MyApp
+export default MyApp;

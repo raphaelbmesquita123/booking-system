@@ -63,6 +63,8 @@ export const GlobalStyle = createGlobalStyle`
     --gray: #F3F3F3;
     --gray-200: #dadada;
     --gray-500: #999999;
+    --cream: #F3EFE4;
+    --gray-texas: #374043;
   }
 
 `
