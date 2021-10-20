@@ -1,6 +1,6 @@
+import React from 'react'
 import type { NextPage } from "next";
 import Head from "next/head";
-import Img from "next/image";
 
 //components
 import { BookingForm } from "../components/bookingForm";
