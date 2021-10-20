@@ -9,13 +9,17 @@ export const SelectContainer = styled.div`
   width: 100%;
   height: 100%;
   min-width: 300px;
+
   select {
     font-size: 25px;
-    padding: 1.5rem;
+    padding: 1rem;
     border: none;
     border-radius: 10px;
     background: var(--cream);
     cursor: pointer;
     font-style: italic;
+    @media (max-width: 500px) {
+      font-size: 15px;
+    }
   }
 `;

@@ -39,8 +39,23 @@ import { useBooking } from "../../hooks";
 // }
 
 export function BookingDashboard() {
-
-  const { today, handleDateChange, booking4to530, booking430to6, booking5to630, booking530to7, booking6to730, booking630to8, booking7to830, booking730to9, booking8to930, booking830to10, booking9to1030, booking930to11, booking10to1130 } = useBooking()
+  const {
+    today,
+    handleDateChange,
+    booking4to530,
+    booking430to6,
+    booking5to630,
+    booking530to7,
+    booking6to730,
+    booking630to8,
+    booking7to830,
+    booking730to9,
+    booking8to930,
+    booking830to10,
+    booking9to1030,
+    booking930to11,
+    booking10to1130,
+  } = useBooking();
 
   // const [dateBooking, setDateBooking] = useState<DateBookingProps>();
   // const [loading, setLoading] = useState(true);
@@ -113,8 +128,8 @@ export function BookingDashboard() {
   //   }
   // );
 
-  function hadleFormDateChange (date: string) {
-    handleDateChange(date)
+  function hadleFormDateChange(date: string) {
+    handleDateChange(date);
   }
   return (
     <Container>
@@ -136,7 +151,11 @@ export function BookingDashboard() {
       </BookingContainer> */}
       <BookingContainer>
         <div className='bookingDateContainer'>
-          <input type='date' onChange={(e) => hadleFormDateChange(e.target.value)} defaultValue={today}/>
+          <input
+            type='date'
+            onChange={(e) => hadleFormDateChange(e.target.value)}
+            defaultValue={today}
+          />
         </div>
       </BookingContainer>
       <DashboardContainer>

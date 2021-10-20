@@ -69,7 +69,7 @@ export const FormContainer = styled.form<FormContainerProps>`
       color: var(--cream);
       margin-bottom: 1rem;
     }
-    small{
+    small {
       color: var(--gray-500);
       width: 80%;
       min-width: 260px;
@@ -144,7 +144,7 @@ export const FormContainer = styled.form<FormContainerProps>`
   }
   .formTime {
     position: relative;
-    .formTimeWaitList{
+    .formTimeWaitList {
       position: absolute;
       bottom: 3rem;
       width: 100%;
@@ -200,7 +200,7 @@ export const FormContainer = styled.form<FormContainerProps>`
       align-self: flex-end;
       cursor: pointer;
 
-      &:active{
+      &:active {
         transform: scale(0.98);
       }
       @media (max-width: 500px) {

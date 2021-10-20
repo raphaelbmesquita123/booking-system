@@ -16,7 +16,7 @@ export let data = {
       quantityOfTables: 26,
     },
     {
-      id:4,
+      id: 4,
       amountOfPeople: 5,
       quantityOfTables: 26,
     },

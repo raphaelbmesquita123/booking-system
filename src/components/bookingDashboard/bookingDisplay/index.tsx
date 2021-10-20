@@ -42,9 +42,8 @@ export function BookingDisplay({ arrayBookings }: BookingDisplayProps) {
   };
 
   function openModal() {
-      setIsOpen(true);
+    setIsOpen(true);
   }
-
 
   function closeModal() {
     setIsOpen(false);
@@ -59,8 +58,8 @@ export function BookingDisplay({ arrayBookings }: BookingDisplayProps) {
           </span>
         ) : (
           arrayBookings?.resevations.map((x) => {
-            function click(){
-              x.hasRequest && openModal() 
+            function click() {
+              x.hasRequest && openModal();
             }
 
             return (

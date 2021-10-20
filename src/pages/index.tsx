@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { useState, useEffect } from "react";
 import Head from "next/head";
 import Img from "next/image";
 
@@ -8,7 +7,6 @@ import { BookingForm } from "../components/bookingForm";
 
 //styles
 import { Container, BackgroundColor } from "./styles";
-import { BookingDashboard } from "../components/bookingDashboard";
 
 const Home: NextPage = () => {
   return (
@@ -22,7 +20,6 @@ const Home: NextPage = () => {
       <div className='booking'>
         <BookingForm />
       </div>
-      {/* <BookingDashboard /> */}
     </Container>
   );
 };

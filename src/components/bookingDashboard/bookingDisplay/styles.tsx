@@ -59,7 +59,6 @@ export const ModalMessage = styled.div<ModalMessageProps>`
   min-width: 300px;
   z-index: 2;
 
-
   .modalClientInfo {
     background: var(--gray);
     border-radius: 1rem;
@@ -118,10 +117,8 @@ export const HorizontalDisplayContainer = styled.div`
     background: var(--gray);
   }
 
-  .horizontalDisplayMessage{
+  .horizontalDisplayMessage {
     margin-left: 1rem;
     opacity: 0.3;
-    text-transform: ;
-  } 
-
+  }
 `;

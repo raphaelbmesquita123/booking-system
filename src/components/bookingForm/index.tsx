@@ -1,14 +1,12 @@
 import React from "react";
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 //styles
 import { Container, FormContainer } from "./styles";
 
-//servoces
-import { api } from "../../services/api";
+//services
 import { FormOptionsTime } from "./formOptionsTime";
 
 //hooks

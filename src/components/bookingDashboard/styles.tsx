@@ -40,15 +40,14 @@ export const DashboardContainer = styled.div`
       height: 4.3rem;
       width: 8rem;
       text-align: center;
-      font-size:0.7rem;
+      font-size: 0.7rem;
       background: white;
-      &:nth-child( 2n + 1 ){
+      &:nth-child(2n + 1) {
         background: var(--gray);
       }
-
     }
   }
-  .dashboardDiaplyContainer{
+  .dashboardDiaplyContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
