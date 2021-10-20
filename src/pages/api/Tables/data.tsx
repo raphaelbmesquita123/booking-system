@@ -3,37 +3,37 @@ export let data = {
     {
       id: 1,
       amountOfPeople: 2,
-      quantityOfTables: 10,
+      quantityOfTables: 2,
     },
     {
       id: 2,
       amountOfPeople: 3,
-      quantityOfTables: 3,
+      quantityOfTables: 15,
     },
     {
       id: 3,
       amountOfPeople: 4,
-      quantityOfTables: 4,
+      quantityOfTables: 26,
     },
     {
       id:4,
       amountOfPeople: 5,
-      quantityOfTables: 5,
+      quantityOfTables: 26,
     },
     {
       id: 5,
       amountOfPeople: 6,
-      quantityOfTables: 6,
+      quantityOfTables: 18,
     },
     {
       id: 6,
       amountOfPeople: 7,
-      quantityOfTables: 7,
+      quantityOfTables: 18,
     },
     {
       id: 7,
       amountOfPeople: 8,
-      quantityOfTables: 8,
+      quantityOfTables: 7,
     },
     {
       id: 8,

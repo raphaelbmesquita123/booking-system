@@ -14,11 +14,10 @@ import { FormOptionsTime } from "./formOptionsTime";
 //hooks
 import { useBooking } from "../../hooks";
 
-
 export function BookingForm() {
   const [formPostion, setFormPosition] = useState(0);
   const [agreed, setAgreed] = useState(false);
-  const { today, handleDateChange } = useBooking()
+  const { today, handleDateChange } = useBooking();
 
   const [formDate, setFormDate] = useState(today);
   const [formAmountOfPeople, setFormAmountOfPeople] = useState("2");
@@ -28,7 +27,6 @@ export function BookingForm() {
   const [formEmail, setFormEmail] = useState("");
   const [formRequest, setFormRequest] = useState("");
   const [bookingConfirmationOpen, setBookingConfirmationOpen] = useState(false);
-
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -60,7 +58,7 @@ export function BookingForm() {
     }
   }
   function handleFormDateChange(date: string) {
-    handleDateChange(date)
+    handleDateChange(date);
     setFormDate(date);
     handleFormDown();
   }
@@ -71,14 +69,14 @@ export function BookingForm() {
   }
 
   function handleFormTimeChange(time: string) {
-    console.log(time)
+    console.log(time);
     setFormTimeAvailable(time);
     handleFormDown();
   }
 
   return (
     <Container>
-      <a href='https://texassteakout.ie/' target='_blank'>
+      <a href='https://texassteakout.ie/' target='_blank' rel='noreferrer'>
         <img src='/logo.png' alt='' />
       </a>
       <FormContainer top={`${formPostion}px`}>
@@ -146,10 +144,17 @@ export function BookingForm() {
         <div className='formTime'>
           <h2>Time Available</h2>
           <label htmlFor=''>
-            <FormOptionsTime 
+            <FormOptionsTime
               getValue={(e) => handleFormTimeChange(e)}
               amountOfPeople={formAmountOfPeople}
-              />
+            />
+            <div className='formTimeWaitList'>
+              <span>
+                If your chosen time is not available you can be added to the
+                waiting list and If there is a cancelation you will be notified
+                by email an hour before the chosen time
+              </span>
+            </div>
             {/* <select
               name=''
               id=''
@@ -206,8 +211,8 @@ export function BookingForm() {
         <div className='formRequests'>
           <h2> Request </h2>
           <small>
-            Do you have any special requests? Tell us and we'll see what we can
-            do!
+            Do you have any special requests? Tell us and we will see what we
+            can do!
           </small>
           <label htmlFor=''>
             <textarea

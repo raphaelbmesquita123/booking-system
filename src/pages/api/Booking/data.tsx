@@ -114,7 +114,7 @@ export let data = {
             },
             {
               id: 3,
-              amountOfPeople: 2,
+              amountOfPeople: 3,
               name: "Michael ",
               confirmed: false,
               mobileNumber: '834280065',

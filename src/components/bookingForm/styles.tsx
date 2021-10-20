@@ -142,20 +142,20 @@ export const FormContainer = styled.form<FormContainerProps>`
       }
     }
   }
-  /* .formTime {
-    label {
-      select {
-        font-size: 25px;
-        padding: 1.5rem;
-        border: none;
-        border-radius: 10px;
-        background: var(--cream);
-        cursor: pointer;
-        option{
-        }
-      }
+  .formTime {
+    position: relative;
+    .formTimeWaitList{
+      position: absolute;
+      bottom: 3rem;
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      padding: 0 1rem;
+      min-width: 280px;
+      color: var(--cream);
     }
-  } */
+  }
   .formContacts {
     label {
       input {
