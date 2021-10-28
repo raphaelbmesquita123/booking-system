@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { api } from "../../../services/api";
 
 //styles
 import { SelectContainer } from "./styles";
 
 //hooks
 import { useBooking } from "../../../hooks";
+
+//services
+import { apiStrapi } from "../../../services/api";
 
 interface FormOptionsTimeProps {
   getValue: (value: string) => void;
@@ -33,8 +35,6 @@ export function FormOptionsTime({
   amountOfPeople,
 }: FormOptionsTimeProps) {
   const [quatityOftables, setQuantityOfTables] = useState<number>(8);
-  const [table22, setTable22] = useState(0);
-
   const {
     booking4to530,
     booking430to6,
@@ -51,25 +51,27 @@ export function FormOptionsTime({
     booking10to1130,
   } = useBooking();
 
-  function thereIsStillTablesAvailable(bookingTime: BookingTimeProps) {
+  function thereIsStillTablesAvailable(bookingTime: any) {
     if (bookingTime) {
-      let test = 0;
-      const quantityOfBookings = bookingTime.resevations.filter((x) => {
-        return x.amountOfPeople === Number(amountOfPeople);
+      const quantityOfBookings = bookingTime.filter((x: any) => {
+        return x.amount_of_people === Number(amountOfPeople);
       });
-      console.log(quatityOftables - quantityOfBookings.length);
-      return quatityOftables - quantityOfBookings.length;
+      const tablesFree = quatityOftables - quantityOfBookings.length;
+      return Math.floor(tablesFree);
     } else {
-      return quatityOftables;
+      return Math.ceil(quatityOftables / 4);
     }
   }
 
   useEffect(() => {
     async function getTables() {
-      await api
-        .get(`/Tables/${Number(amountOfPeople)}`)
+      await apiStrapi
+        .get("/tables")
         .then((res: any) => {
-          setQuantityOfTables(res.data.quantityOfTables);
+          const quantityOfTablePerPeople = res.data.find((x: any) => {
+            return x.amountOfPeople === Number(amountOfPeople);
+          });
+          setQuantityOfTables(quantityOfTablePerPeople.quantityOfTables);
         })
         .catch((err: any) => {
           throw err;
@@ -94,6 +96,7 @@ export function FormOptionsTime({
             4pm to 5:30pm
           </option>
         )}
+
         {thereIsStillTablesAvailable(booking430to6) > 0 ? (
           <option
             label={`4:30pm to 6pm - ${thereIsStillTablesAvailable(
@@ -254,18 +257,6 @@ export function FormOptionsTime({
             10pm to 11:30pm
           </option>
         )}
-        {/* <option label='4:30pm to pm'>4:30pm to pm</option>
-        <option label='5pm to 6:30pm'>5pm to 6:30pm</option>
-        <option label='5:30pm to 7pm'>5:30pm to 7pm</option>
-        <option label='6pm to 7:30pm'>6pm to 7:30pm</option>
-        <option label='6:30pm to 8pm'>6:30pm to 8pm</option>
-        <option label='7pm to 8:30pm'>7pm to 8:30pm</option>
-        <option label='7:30pm to 9pm'>7:30pm to 9pm</option>
-        <option label='8pm to 9:30pm'>8pm to 9:30pm</option>
-        <option label='8:30pm to 10pm'>8:30pm to 10pm</option>
-        <option label='9pm to 10:30pm'>9pm to 10:30pm</option>
-        <option label='9:30pm to 11pm'>9:30pm to 11pm</option>
-        <option label='10pm to 11:30pm'>10pm to 11:30pm</option> */}
       </select>
     </SelectContainer>
   );

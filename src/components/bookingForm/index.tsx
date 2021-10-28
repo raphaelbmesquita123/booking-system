@@ -10,6 +10,8 @@ import { FormOptionsTime } from "./formOptionsTime";
 
 //hooks
 import { useBooking } from "../../hooks";
+import { apiStrapi } from "../../services/api";
+import Router from "next/router";
 
 export function BookingForm() {
   const [formPostion, setFormPosition] = useState(0);
@@ -17,17 +19,39 @@ export function BookingForm() {
   const { today, handleDateChange } = useBooking();
 
   const [formDate, setFormDate] = useState(today);
-  const [formAmountOfPeople, setFormAmountOfPeople] = useState("2");
+  const [formAmountOfPeople, setFormAmountOfPeople] = useState('2');
   const [formTimeAvailable, setFormTimeAvailable] = useState("4pm to 5:30pm");
   const [formName, setFormName] = useState("");
   const [formContactNumber, setFormContactNumber] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formRequest, setFormRequest] = useState("");
-  const [bookingConfirmationOpen, setBookingConfirmationOpen] = useState(false);
+  const [ buttonDisabled, setButtonDisabled] = useState(false);
 
-  function handleSubmit(e: any) {
+  async function handleSubmit(e: any) {
     e.preventDefault();
-    console.log("oi");
+    await apiStrapi.post('/bookings', {
+      name: formName,
+      amount_of_people: Number(formAmountOfPeople),
+      time: formTimeAvailable,
+      contact_number: formContactNumber,
+      email: formEmail,
+      has_request: formRequest.length > 5 ? true : false,
+      request: formRequest,
+      date: formDate,
+    }).then(() => {
+      toast.info('You table was booked successfully.');
+      setButtonDisabled(true)
+      // setTimeout(() => {
+      //   Router.push('https://texassteakout.ie/')
+      // }, 4000);
+    }).catch((error) => {
+      setButtonDisabled(true)
+      toast.info('Something went wrong, please call us on 061-414 440.');
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000);
+      console.log(error)
+    })
   }
 
   function handleFormUp() {
@@ -48,6 +72,7 @@ export function BookingForm() {
         formContactNumber.length === 0 ||
         formEmail.length === 0)
     ) {
+      
       toast.info("We need your personal details to book a table");
       return;
     } else {
@@ -70,6 +95,7 @@ export function BookingForm() {
     setFormTimeAvailable(time);
     handleFormDown();
   }
+
 
   return (
     <Container>
@@ -137,7 +163,6 @@ export function BookingForm() {
             </select>
           </label>
         </div>
-
         <div className='formTime'>
           <h2>Time Available</h2>
           <label htmlFor=''>
@@ -152,25 +177,6 @@ export function BookingForm() {
                 by email an hour before the chosen time
               </span>
             </div>
-            {/* <select
-              name=''
-              id=''
-              onChange={(e) => handleTimeChange(e.target.value)}
-            >
-              <option label='4pm to 5:30pm'>4pm to 5:30pm</option>
-              <option label='4:30pm to 6pm'>4:30pm to 6pm</option>
-              <option label='5pm to 6:30pm'>5pm to 6:30pm</option>
-              <option label='5:30pm to 7pm'>5:30pm to 7pm</option>
-              <option label='6pm to 7:30pm'>6pm to 7:30pm</option>
-              <option label='6:30pm to 8pm'>6:30pm to 8pm</option>
-              <option label='7pm to 8:30pm'>7pm to 8:30pm</option>
-              <option label='7:30pm to 9pm'>7:30pm to 9pm</option>
-              <option label='8pm to 9:30pm'>8pm to 9:30pm</option>
-              <option label='8:30pm to 10pm'>8:30pm to 10pm</option>
-              <option label='9pm to 10:30pm'>9pm to 10:30pm</option>
-              <option label='9:30pm to 11pm'>9:30pm to 11pm</option>
-              <option label='10pm to 11:30pm'>10pm to 11:30pm</option>
-            </select> */}
           </label>
         </div>
 
@@ -216,9 +222,9 @@ export function BookingForm() {
               onChange={(e) => setFormRequest(e.target.value)}
             ></textarea>
           </label>
-          <div className='bookingButton' onClick={(e) => handleSubmit(e)}>
+          <button className='bookingButton' onClick={(e) => handleSubmit(e)} disabled={buttonDisabled}>
             Book Now
-          </div>
+          </button>
         </div>
       </FormContainer>
       <div className='formButtons'>

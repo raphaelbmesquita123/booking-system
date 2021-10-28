@@ -10,25 +10,19 @@ import {
 
 interface ResevationsProps {
   id: number;
-  amountOfPeople: string;
+  amount_of_people: string;
   name: string;
   confirmed: boolean;
-  mobileNumber: string;
+  contact_number: string;
   email: string;
-  hasRequest: boolean;
+  has_request: boolean;
   request?: string;
 }
 
-interface BookingDisplayProps {
-  arrayBookings?: {
-    id: number;
-    time: string;
-    resevations?: ResevationsProps[];
-  };
-}
 
-export function BookingDisplay({ arrayBookings }: BookingDisplayProps) {
+export function BookingDisplay({ arrayBookings }: any) {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [clientModalData, setClientModalData] = useState<ResevationsProps>();
 
   const customStyles = {
     content: {
@@ -49,58 +43,60 @@ export function BookingDisplay({ arrayBookings }: BookingDisplayProps) {
     setIsOpen(false);
   }
 
+  function openModalRequest(client: ResevationsProps) {
+    setClientModalData(client);
+    openModal();
+  }
+
   return (
     <>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        ariaHideApp={false}
+      >
+        <ModalMessage
+          spanColor={clientModalData?.confirmed ? "var(--green)" : "var(--red)"}
+        >
+          <div className='modalClientInfo'>
+            <h4>{clientModalData?.name}</h4>
+            <h4>{clientModalData?.contact_number}</h4>
+            <h4>{clientModalData?.email}</h4>
+            <h4>Amount of People: {clientModalData?.amount_of_people}</h4>
+          </div>
+          {clientModalData?.has_request && (
+            <div className='modalClientRequest'>
+              <h4>Request: </h4>
+              <strong>{clientModalData?.request}</strong>
+            </div>
+          )}
+          <span></span>
+          <button onClick={closeModal}>Close</button>
+        </ModalMessage>
+      </Modal>
+
       <HorizontalDisplayContainer>
-        {arrayBookings?.resevations === undefined ? (
+        {arrayBookings === undefined ? (
           <span className='horizontalDisplayMessage'>
             <i>No bookings yet</i>
           </span>
         ) : (
-          arrayBookings?.resevations.map((x) => {
-            function click() {
-              x.hasRequest && openModal();
-            }
-
+          arrayBookings.map((x: any) => {
             return (
               <div key={x.id}>
-                <Modal
-                  isOpen={modalIsOpen}
-                  onRequestClose={closeModal}
-                  style={customStyles}
-                  ariaHideApp={false}
-                >
-                  <ModalMessage
-                    spanColor={x.confirmed ? "var(--green)" : "var(--red)"}
-                  >
-                    <div className='modalClientInfo'>
-                      <h4>{x.name}</h4>
-                      <h4>{x.mobileNumber}</h4>
-                      <h4>{x.email}</h4>
-                      <h4>Amount of People: {x.amountOfPeople}</h4>
-                    </div>
-                    <div className='modalClientRequest'>
-                      <h4>Request: </h4>
-                      <strong>{x.request}</strong>
-                    </div>
-                    <span></span>
-                    <button onClick={closeModal}>Close</button>
-                  </ModalMessage>
-                </Modal>
                 <DisplayContainer
                   spanColor={x.confirmed ? "var(--green)" : "var(--red)"}
-                  background={x.hasRequest ? "var(--blue-50)" : "var(--gray)"}
-                  cursor={x.hasRequest ? "pointer" : "default"}
-                  onClick={() => click()}
+                  background={x.has_request ? "var(--blue-10)" : "var(--gray)"}
+                  onClick={() => openModalRequest(x)}
                 >
                   <div className='displayNameMobile'>
                     <small>{x.name}</small>
-                    <small>{x.mobileNumber}</small>
                   </div>
                   <div className='displayNumberConfirmed'>
-                    <small>{x.amountOfPeople}</small>
-                    <span></span>
+                    <small>{x.amount_of_people}</small>
                   </div>
+                  <span></span>
                 </DisplayContainer>
               </div>
             );

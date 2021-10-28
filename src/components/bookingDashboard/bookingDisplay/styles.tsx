@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 interface DisplayContainerProps {
   spanColor: string;
-  cursor: string;
   background: string;
 }
 
@@ -10,16 +9,35 @@ interface ModalMessageProps {
   spanColor: string;
 }
 
+export const HorizontalDisplayContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 3.2rem;
+  width: 100%;
+  background: var(--gray);
+  &:nth-child(2n + 1) {
+    background: white;
+  }
+
+  .horizontalDisplayMessage {
+    margin-left: 1rem;
+    opacity: 0.3;
+    font-size: 0.8rem;
+  }
+`;
+
 export const DisplayContainer = styled.div<DisplayContainerProps>`
+  position: relative;
   display: flex;
   align-items: center;
   padding: 0.5rem;
-  height: 3.8rem;
+  height: 2.8rem;
   background-color: ${(props) => props.background};
   margin-left: 0.5rem;
   border-radius: 0.5rem;
   border: 3px solid white;
-  cursor: ${(props) => props.cursor};
+  cursor: pointer;
 
   .displayNameMobile,
   .displayNumberConfirmed {
@@ -29,25 +47,27 @@ export const DisplayContainer = styled.div<DisplayContainerProps>`
 
   .displayNameMobile {
     small {
-      &:last-child {
-        margin-top: 0.3rem;
-      }
+      font-size: 0.7rem;
     }
   }
 
   .displayNumberConfirmed {
-    margin-left: 2rem;
+    margin-left: 1rem;
     align-items: center;
-    span {
-      display: block;
-      content: "";
-      margin-top: 0.2rem;
-      width: 20px;
-      height: 20px;
-      border-radius: 100%;
-      border: 1px solid white;
-      background-color: ${(props) => props.spanColor};
-    }
+  }
+  span {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 80%;
+    height: 5px;
+    border: 1px solid white;
+    background-color: ${(props) => props.spanColor};
+    bottom: -1px;
+    left: 50%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transform: translateX(-50%);
   }
 `;
 
@@ -103,22 +123,5 @@ export const ModalMessage = styled.div<ModalMessageProps>`
     padding: 1rem;
     background-color: var(--red);
     color: white;
-  }
-`;
-
-export const HorizontalDisplayContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 4.3rem;
-  background: white;
-  width: 100%;
-  &:nth-child(2n + 1) {
-    background: var(--gray);
-  }
-
-  .horizontalDisplayMessage {
-    margin-left: 1rem;
-    opacity: 0.3;
   }
 `;
