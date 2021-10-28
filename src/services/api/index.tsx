@@ -1,6 +1,5 @@
-import axios from 'axios'
+import axios from "axios";
 
 export const apiStrapi = axios.create({
-    baseURL: 'http://localhost:1337/',
-  })
-  
+  baseURL: process.env.REACT_APP_STRIPE_URL,
+});
