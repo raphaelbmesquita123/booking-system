@@ -8,7 +8,7 @@ import React, {
 import { useCookies } from "react-cookie";
 
 //services
-import { apiStrapi } from "../services/api";
+import { api } from "../services/api";
 
 interface ResevationsProps {
   id: number;
@@ -100,8 +100,8 @@ export function BookingContextProvider({
 
   useEffect(() => {
     async function getBookings() {
-      await apiStrapi
-        .get(`/Bookings`)
+      await api
+        .get(`/bookings`)
         .then((res: any) => {
           const bookingsForToday = res.data.filter((x: any) => {
             return x.date === date;
@@ -109,7 +109,6 @@ export function BookingContextProvider({
           setBookingsByDate(bookingsForToday);
         })
         .catch((err: any) => {
-          console.log("err");
           throw err;
         });
     }

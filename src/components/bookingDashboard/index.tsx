@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
 
 //components
 import { BookingDisplay } from "./bookingDisplay/";
 
 //styles
-import {
-  Container,
-  DashboardContainer,
-} from "./styles";
+import { Container, DashboardContainer } from "./styles";
 
 //hooks
 import { useBooking } from "../../hooks";
@@ -29,7 +25,6 @@ export function BookingDashboard() {
     booking930to11,
     booking10to1130,
   } = useBooking();
-
 
   return (
     <Container>

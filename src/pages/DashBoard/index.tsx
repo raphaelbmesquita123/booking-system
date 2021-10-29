@@ -10,7 +10,7 @@ import { useCookies } from "react-cookie";
 import { LoginContainer } from "./styles";
 
 //services
-import { apiStrapi } from "../../services/api";
+import { api } from "../../services/api";
 
 //hooks
 import { useBooking } from "../../hooks";
@@ -43,7 +43,7 @@ export default function DashBoard() {
 
   const handleLogIn = async (value: any) => {
     try {
-      await apiStrapi
+      await api
         .post(
           "/auth/local",
           {
@@ -85,7 +85,7 @@ export default function DashBoard() {
           }
         });
     } catch (err) {
-      toast.error("Sorry something went wrong este aqui");
+      toast.error("Sorry something went wrong");
     }
   };
   return (

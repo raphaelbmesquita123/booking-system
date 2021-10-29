@@ -1,5 +1,5 @@
 import axios from "axios";
 
-export const apiStrapi = axios.create({
-  baseURL: process.env.REACT_APP_STRIPE_URL,
+export const api = axios.create({
+  baseURL: "http://localhost:1337/",
 });

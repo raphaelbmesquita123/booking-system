@@ -19,7 +19,6 @@ interface ResevationsProps {
   request?: string;
 }
 
-
 export function BookingDisplay({ arrayBookings }: any) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [clientModalData, setClientModalData] = useState<ResevationsProps>();
@@ -77,7 +76,7 @@ export function BookingDisplay({ arrayBookings }: any) {
       </Modal>
 
       <HorizontalDisplayContainer>
-        {arrayBookings === undefined ? (
+        {arrayBookings.length === 0 ? (
           <span className='horizontalDisplayMessage'>
             <i>No bookings yet</i>
           </span>

@@ -10,8 +10,7 @@ import { FormOptionsTime } from "./formOptionsTime";
 
 //hooks
 import { useBooking } from "../../hooks";
-import { apiStrapi } from "../../services/api";
-import Router from "next/router";
+import { api } from "../../services/api";
 
 export function BookingForm() {
   const [formPostion, setFormPosition] = useState(0);
@@ -19,39 +18,42 @@ export function BookingForm() {
   const { today, handleDateChange } = useBooking();
 
   const [formDate, setFormDate] = useState(today);
-  const [formAmountOfPeople, setFormAmountOfPeople] = useState('2');
+  const [formAmountOfPeople, setFormAmountOfPeople] = useState("2");
   const [formTimeAvailable, setFormTimeAvailable] = useState("4pm to 5:30pm");
   const [formName, setFormName] = useState("");
   const [formContactNumber, setFormContactNumber] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formRequest, setFormRequest] = useState("");
-  const [ buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   async function handleSubmit(e: any) {
     e.preventDefault();
-    await apiStrapi.post('/bookings', {
-      name: formName,
-      amount_of_people: Number(formAmountOfPeople),
-      time: formTimeAvailable,
-      contact_number: formContactNumber,
-      email: formEmail,
-      has_request: formRequest.length > 5 ? true : false,
-      request: formRequest,
-      date: formDate,
-    }).then(() => {
-      toast.info('You table was booked successfully.');
-      setButtonDisabled(true)
-      // setTimeout(() => {
-      //   Router.push('https://texassteakout.ie/')
-      // }, 4000);
-    }).catch((error) => {
-      setButtonDisabled(true)
-      toast.info('Something went wrong, please call us on 061-414 440.');
-      setTimeout(() => {
-        window.location.reload();
-      }, 4000);
-      console.log(error)
-    })
+    await api
+      .post("/bookings", {
+        name: formName,
+        amount_of_people: Number(formAmountOfPeople),
+        time: formTimeAvailable,
+        contact_number: formContactNumber,
+        email: formEmail,
+        has_request: formRequest.length > 5 ? true : false,
+        request: formRequest,
+        date: formDate,
+      })
+      .then(() => {
+        toast.info("You table was booked successfully.");
+        setButtonDisabled(true);
+        // setTimeout(() => {
+        //   Router.push('https://texassteakout.ie/')
+        // }, 4000);
+      })
+      .catch((error) => {
+        setButtonDisabled(true);
+        toast.info("Something went wrong, please call us on 061-414 440.");
+        setTimeout(() => {
+          window.location.reload();
+        }, 4000);
+        console.log(error);
+      });
   }
 
   function handleFormUp() {
@@ -72,7 +74,6 @@ export function BookingForm() {
         formContactNumber.length === 0 ||
         formEmail.length === 0)
     ) {
-      
       toast.info("We need your personal details to book a table");
       return;
     } else {
@@ -95,7 +96,6 @@ export function BookingForm() {
     setFormTimeAvailable(time);
     handleFormDown();
   }
-
 
   return (
     <Container>
@@ -222,7 +222,11 @@ export function BookingForm() {
               onChange={(e) => setFormRequest(e.target.value)}
             ></textarea>
           </label>
-          <button className='bookingButton' onClick={(e) => handleSubmit(e)} disabled={buttonDisabled}>
+          <button
+            className='bookingButton'
+            onClick={(e) => handleSubmit(e)}
+            disabled={buttonDisabled}
+          >
             Book Now
           </button>
         </div>

@@ -7,7 +7,7 @@ import { SelectContainer } from "./styles";
 import { useBooking } from "../../../hooks";
 
 //services
-import { apiStrapi } from "../../../services/api";
+import { api } from "../../../services/api";
 
 interface FormOptionsTimeProps {
   getValue: (value: string) => void;
@@ -65,7 +65,7 @@ export function FormOptionsTime({
 
   useEffect(() => {
     async function getTables() {
-      await apiStrapi
+      await api
         .get("/tables")
         .then((res: any) => {
           const quantityOfTablePerPeople = res.data.find((x: any) => {

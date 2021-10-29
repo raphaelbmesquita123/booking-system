@@ -47,13 +47,14 @@ export const DisplayContainer = styled.div<DisplayContainerProps>`
 
   .displayNameMobile {
     small {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
   }
 
   .displayNumberConfirmed {
     margin-left: 1rem;
     align-items: center;
+    font-size: 0.7rem;
   }
   span {
     position: absolute;

@@ -41,5 +41,3 @@ export const DashboardContainer = styled.div`
     width: 100%;
   }
 `;
-
-
