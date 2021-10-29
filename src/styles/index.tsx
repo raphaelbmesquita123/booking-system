@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -22,3 +21,11 @@ export const BackgroundColor = styled.main`
   background: black;
   opacity: 0.7;
 `;
+
+export const theme = {
+  colors: {
+    background: "#121214",
+    text: "#e1e1e6",
+    primary: "#22314D",
+  },
+};
