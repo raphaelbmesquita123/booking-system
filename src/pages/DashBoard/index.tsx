@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Router from "next/router";
-import { useCookies } from "react-cookie";
 
 //styles
 import { LoginContainer } from "./styles";
@@ -24,7 +23,6 @@ const LoginSchema = yup.object().shape({
 });
 
 export default function DashBoard() {
-  const [loginOpen, setLoginOpen] = useState(false);
   const { handleUserLoginIn, user } = useBooking();
 
   const {

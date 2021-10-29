@@ -42,10 +42,6 @@ type ProductsProps = {
   booking10to1130?: any;
 };
 
-interface UserProps {
-  jwt?: string;
-  user?: object;
-}
 const BookingContext = createContext<ProductsProps>({} as ProductsProps);
 
 type bookingContextProviderProps = {

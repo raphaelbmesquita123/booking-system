@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import Router from "next/router";
 import Link from "next/link";
 import Modal from "react-modal";
-import { toast } from "react-toastify";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
 //styles
 import {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Router from "next/router";
 
 //styles
 import { Container, FormContainer } from "./styles";
@@ -42,9 +43,9 @@ export function BookingForm() {
       .then(() => {
         toast.info("You table was booked successfully.");
         setButtonDisabled(true);
-        // setTimeout(() => {
-        //   Router.push('https://texassteakout.ie/')
-        // }, 4000);
+        setTimeout(() => {
+          Router.push("https://texassteakout.ie/");
+        }, 4000);
       })
       .catch((error) => {
         setButtonDisabled(true);
