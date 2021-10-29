@@ -101,7 +101,7 @@ export function BookingContextProvider({
   useEffect(() => {
     async function getBookings() {
       await api
-        .get(`/bookings`)
+        .get("/bookings")
         .then((res: any) => {
           const bookingsForToday = res.data.filter((x: any) => {
             return x.date === date;
