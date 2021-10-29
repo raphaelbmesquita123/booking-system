@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
 
 //styles
-import { GlobalStyle } from "./styles/globals";
+import { GlobalStyle } from "../styles/globals";
 import "react-toastify/dist/ReactToastify.css";
 
 //hooks

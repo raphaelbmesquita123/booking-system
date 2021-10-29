@@ -6,7 +6,7 @@ import Head from "next/head";
 import { BookingForm } from "../components/bookingForm";
 
 //styles
-import { Container, BackgroundColor } from "./styles";
+import { Container, BackgroundColor } from "../styles";
 
 const Home: NextPage = () => {
   return (

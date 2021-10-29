@@ -3,8 +3,9 @@ import Router from "next/router";
 import Link from "next/link";
 
 //styles
-import { NavBarContainer } from "../Painel/styles";
-import { SettingsContainer } from "./styles";
+import { SettingsContainer } from "../../../styles/dashboard-settings";
+import { NavBarContainer } from "../../../styles/dashboard-painel";
+
 
 //hooks
 import { useBooking } from "../../../hooks";

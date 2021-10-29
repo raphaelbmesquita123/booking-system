@@ -76,12 +76,12 @@ export function BookingDisplay({ arrayBookings }: any) {
       </Modal>
 
       <HorizontalDisplayContainer>
-        {arrayBookings.length === 0 ? (
+        {arrayBookings?.length === null ? (
           <span className='horizontalDisplayMessage'>
             <i>No bookings yet</i>
           </span>
         ) : (
-          arrayBookings.map((x: any) => {
+          arrayBookings?.map((x: any) => {
             return (
               <div key={x.id}>
                 <DisplayContainer

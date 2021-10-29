@@ -11,7 +11,7 @@ import {
   ModalMessageForm,
   NavBarContainer,
   SpanColor,
-} from "./styles";
+} from "../../../styles/dashboard-painel";
 
 //components
 import { BookingDashboard } from "../../../components/bookingDashboard";
@@ -41,9 +41,9 @@ export default function Painel() {
     handleDateChange(date);
   }
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  // function openModal() {
+  //   setIsOpen(true);
+  // }
 
   function closeModal() {
     setIsOpen(false);
@@ -57,18 +57,18 @@ export default function Painel() {
     }
   }, [user]);
 
-  async function handleTest() {
-    await axios
-      .get(
-        "https://api.sendmode.com/httppost.aspx?Type=sendparam&username=michael.p.ryan@me.com&password=Setexas2864@&numto=353834280065&data1=Hello_World!"
-      )
-      .then((response: any) => {
-        return response.json();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
-  }
+  // async function handleTest() {
+  //   await axios
+  //     .get(
+  //       "https://api.sendmode.com/httppost.aspx?Type=sendparam&username=michael.p.ryan@me.com&password=Setexas2864@&numto=353834280065&data1=Hello_World!"
+  //     )
+  //     .then((response: any) => {
+  //       return response.json();
+  //     })
+  //     .catch((err: any) => {
+  //       console.log(err);
+  //     });
+  // }
 
   return (
     <DashboardContainer>

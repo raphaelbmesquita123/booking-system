@@ -6,7 +6,7 @@ import * as yup from "yup";
 import Router from "next/router";
 
 //styles
-import { LoginContainer } from "./styles";
+import { LoginContainer } from "../../styles/dashboard";
 
 //services
 import { api } from "../../services/api";
